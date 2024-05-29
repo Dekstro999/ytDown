@@ -1,3 +1,4 @@
+
 # Descargador de YouTube
 
 Este proyecto es una aplicación de escritorio desarrollada en Python que permite descargar videos de YouTube en diferentes resoluciones. Utiliza la biblioteca `pytube` para la descarga de videos y `tkinter` para la interfaz gráfica de usuario (GUI).
@@ -64,6 +65,10 @@ Si deseas contribuir a este proyecto, por favor sigue estos pasos:
 3. Realiza los cambios necesarios y haz commit (`git commit -am 'Añadir nueva funcionalidad'`).
 4. Sube los cambios a tu repositorio (`git push origin feature/nueva-funcionalidad`).
 5. Abre un Pull Request en GitHub.
+
+## Acerca de
+
+Este proyecto es de código abierto y libre de pirañas.
 
 ## Licencia
 
