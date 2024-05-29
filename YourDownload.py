@@ -60,7 +60,11 @@ def open_download_folder():
 
 # Crear la ventana principal
 root = tk.Tk()
-root.title("YourDownload 0.4")
+root.title("YourDownload 0.5")
+
+# Establecer el ícono de la ventana
+icon_path = os.path.join(os.getcwd(), "icon.ico")
+root.iconbitmap(icon_path)
 
 # Establecer la imagen de fondo
 background_image = tk.PhotoImage(file=os.path.join(os.getcwd(), "flor.png"))
