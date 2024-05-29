@@ -2,6 +2,7 @@ import tkinter as tk
 from tkinter import ttk
 from pytube import YouTube
 import threading
+import os
 
 def download_video():
     url = url_entry.get()
@@ -19,25 +20,37 @@ def download_video():
         try:
             yt = YouTube(url, on_progress_callback=progress_callback)
             stream = yt.streams.filter(progressive=True, file_extension='mp4', res=resolution).first()
-            
+
             if stream:
+                global filepath
+                filepath = stream.download()
                 status_label.config(text=f"Descargando: {yt.title} en resolución {resolution}")
-                stream.download()
-                status_label.config(text="Descarga completada.")
-                progress_var.set(0)
+                status_label.after(1000, check_download_completion)  # Comprueba si la descarga se ha completado
             else:
                 status_label.config(text=f"Error: No se encontró una stream con resolución {resolution}.")
         except Exception as e:
             status_label.config(text=f"Error: Ha ocurrido un error: {e}")
 
-    # Iniciar la descarga en un hilo separado para no bloquear la interfaz
-    threading.Thread(target=start_download).start()
+    threading.Thread(target=start_download).start()  # Iniciar la descarga en un hilo separado
+
+def check_download_completion():
+    if os.path.exists(filepath):
+        status_label.config(text="Descarga completada.")
+        progress_var.set(0)
+        open_folder_button.config(state=tk.NORMAL)  # Habilitar el botón de buscar archivo
+    else:
+        status_label.after(1000, check_download_completion)
 
 def progress_callback(stream, chunk, bytes_remaining):
     total_size = stream.filesize
     bytes_downloaded = total_size - bytes_remaining
     percentage_of_completion = (bytes_downloaded / total_size) * 100
     progress_var.set(percentage_of_completion)
+
+def open_download_folder():
+    if filepath:
+        folder_path = os.path.dirname(filepath)
+        os.system(f'explorer {os.path.realpath(folder_path)}')
 
 # Crear la ventana principal
 root = tk.Tk()
@@ -60,14 +73,18 @@ resolution_combobox.grid(row=1, column=1, padx=10, pady=(10, 0), sticky='w')
 download_button = tk.Button(root, text="Descargar", command=download_video, font=font_large_bold)
 download_button.grid(row=2, column=0, columnspan=2, pady=20)
 
+# Botón para buscar el archivo descargado
+open_folder_button = tk.Button(root, text="Buscar Archivo", command=open_download_folder, font=font_large_bold, state=tk.DISABLED)
+open_folder_button.grid(row=3, column=0, columnspan=2, pady=10)
+
 # Barra de progreso
 progress_var = tk.DoubleVar()
 progress_bar = ttk.Progressbar(root, variable=progress_var, maximum=100)
-progress_bar.grid(row=3, column=0, columnspan=2, padx=10, pady=10, sticky='ew')
+progress_bar.grid(row=4, column=0, columnspan=2, padx=10, pady=10, sticky='ew')
 
 # Etiqueta de estado
 status_label = tk.Label(root, text="", font=('Arial', 12))
-status_label.grid(row=4, column=0, columnspan=2, pady=10)
+status_label.grid(row=5, column=0, columnspan=2, pady=10)
 
 # Iniciar el bucle principal de la interfaz
 root.mainloop()
