@@ -44,7 +44,7 @@ def check_download_completion():
     if os.path.exists(filepath):
         status_label.config(text="Descarga completada.")
         progress_var.set(0)
-        open_folder_button.config(state=tk.NORMAL)  # Habilitar el botón de buscar archivo
+        open_folder_button.config(state=tk.NORMAL)  
     else:
         status_label.after(1000, check_download_completion)
 
