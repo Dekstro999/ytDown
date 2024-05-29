@@ -46,7 +46,6 @@ Para ejecutar este proyecto desde el código fuente, necesitarás tener instalad
 
    ```bash
    git clone https://github.com/Dekstro999/ytDown
-   cd descargador-youtube
    ```
 
 2. **Crear y activar un entorno virtual (opcional pero recomendado)**
