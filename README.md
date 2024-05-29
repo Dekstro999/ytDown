@@ -45,7 +45,7 @@ Para ejecutar este proyecto desde el código fuente, necesitarás tener instalad
 1. **Clonar el repositorio**
 
    ```bash
-   git clone https://github.com/tu-usuario/descargador-youtube.git
+   git clone https://github.com/Dekstro999/ytDown
    cd descargador-youtube
    ```
 
@@ -100,6 +100,3 @@ Este proyecto es de código abierto y libre de pirañas.
 ## Licencia
 
 Este proyecto está bajo la licencia MIT. Para más detalles, consulta el archivo `LICENSE`.
-```
-
-Este README proporciona instrucciones tanto para usuarios que solo quieren ejecutar la aplicación empaquetada como para desarrolladores que desean clonar el repositorio y modificar el código fuente.
