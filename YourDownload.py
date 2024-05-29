@@ -35,7 +35,7 @@ def download_video():
             else:
                 status_label.config(text=f"Error: No se encontró una stream con resolución {resolution}.")
         except Exception as e:
-            status_label.config(text=f"Error: Ha ocurrido un error: {e}")
+            status_label.config(text=f"Error: ERROR 404 - {e}")
 
 
     threading.Thread(target=start_download).start()  # Iniciar la descarga en un hilo separado
@@ -60,21 +60,33 @@ def open_download_folder():
 
 # Crear la ventana principal
 root = tk.Tk()
-root.title("Descargador de YouTube")
-root.geometry("800x300")
+root.title("YourDownload 0.3")
+root.geometry("800x305")
+# Establecer la imagen de fondo
+background_image = tk.PhotoImage(file=os.path.join(os.getcwd(), "flor.png"))
+background_label = tk.Label(root, image=background_image)
+background_label.place(relwidth=1, relheight=1)
+
 
 # Configuración de la fuente
 font_large_bold = ('Helvetica', 14, 'bold')
 
 # Crear y colocar los widgets
-tk.Label(root, text="URL del video:", font=font_large_bold).grid(row=0, column=0, padx=10, pady=10, sticky='e')
+# Etiqueta "URL del video"
+label_url = tk.Label(root, text="URL del video:", font=font_large_bold, fg="black")
+label_url.grid(row=0, column=0, padx=10, pady=10, sticky='e')
+
 url_entry = tk.Entry(root, width=65, font=('Arial', 12))
 url_entry.grid(row=0, column=1, padx=10, pady=10)
 
-tk.Label(root, text="Resolución:", font=font_large_bold).grid(row=1, column=0, padx=10, pady=(10, 0), sticky='e')
+# Etiqueta "Resolución"
+label_resolution = tk.Label(root, text="Resolución:", font=font_large_bold, fg="black")
+label_resolution.grid(row=1, column=0, padx=10, pady=(10, 0), sticky='e')
+
 resolutions = ['360p', '480p', '720p', '1080p']
 resolution_combobox = ttk.Combobox(root, values=resolutions, state='readonly', font=font_large_bold)
 resolution_combobox.grid(row=1, column=1, padx=10, pady=(10, 0), sticky='w')
+
 
 download_button = tk.Button(root, text="Descargar", command=download_video, font=font_large_bold)
 download_button.grid(row=2, column=0, columnspan=2, pady=20)
@@ -92,5 +104,4 @@ progress_bar.grid(row=4, column=0, columnspan=2, padx=10, pady=10, sticky='ew')
 status_label = tk.Label(root, text="", font=('Arial', 12))
 status_label.grid(row=5, column=0, columnspan=2, pady=10)
 
-# Iniciar el bucle principal de la interfaz
 root.mainloop()
