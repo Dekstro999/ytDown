@@ -60,48 +60,46 @@ def open_download_folder():
 
 # Crear la ventana principal
 root = tk.Tk()
-root.title("YourDownload 0.3")
-root.geometry("800x305")
+root.title("YourDownload 0.4")
+
 # Establecer la imagen de fondo
 background_image = tk.PhotoImage(file=os.path.join(os.getcwd(), "flor.png"))
 background_label = tk.Label(root, image=background_image)
-background_label.place(relwidth=1, relheight=1)
+background_label.place(relx=0.5, rely=0.5, anchor="center", relwidth=1, relheight=1)  # Modificado para ajustar a la ventana
 
-
-# Configuración de la fuente
-font_large_bold = ('Helvetica', 14, 'bold')
+# Limitar el tamaño mínimo de la ventana
+root.minsize(800, 350)
 
 # Crear y colocar los widgets
 # Etiqueta "URL del video"
-label_url = tk.Label(root, text="URL del video:", font=font_large_bold, fg="black")
-label_url.grid(row=0, column=0, padx=10, pady=10, sticky='e')
+label_url = tk.Label(root, text="URL del video:", font=('Helvetica', 14, 'bold'), fg="black")
+label_url.place(x=20, y=20)
 
 url_entry = tk.Entry(root, width=65, font=('Arial', 12))
-url_entry.grid(row=0, column=1, padx=10, pady=10)
+url_entry.place(x=170, y=20)
 
 # Etiqueta "Resolución"
-label_resolution = tk.Label(root, text="Resolución:", font=font_large_bold, fg="black")
-label_resolution.grid(row=1, column=0, padx=10, pady=(10, 0), sticky='e')
+label_resolution = tk.Label(root, text="Resolución:", font=('Helvetica', 14, 'bold'), fg="black")
+label_resolution.place(x=20, y=60)
 
 resolutions = ['360p', '480p', '720p', '1080p']
-resolution_combobox = ttk.Combobox(root, values=resolutions, state='readonly', font=font_large_bold)
-resolution_combobox.grid(row=1, column=1, padx=10, pady=(10, 0), sticky='w')
+resolution_combobox = ttk.Combobox(root, values=resolutions, state='readonly', font=('Helvetica', 14, 'bold'))
+resolution_combobox.place(x=170, y=60)
 
-
-download_button = tk.Button(root, text="Descargar", command=download_video, font=font_large_bold)
-download_button.grid(row=2, column=0, columnspan=2, pady=20)
+download_button = tk.Button(root, text="Descargar", command=download_video, font=('Helvetica', 14, 'bold'))
+download_button.place(relx=0.5, rely=0.4, anchor="center")
 
 # Botón para buscar el video
-open_folder_button = tk.Button(root, text="Buscar video", command=open_download_folder, font=font_large_bold)
-open_folder_button.grid(row=3, column=0, columnspan=2, pady=10)
+open_folder_button = tk.Button(root, text="Buscar video", command=open_download_folder, font=('Helvetica', 14, 'bold'))
+open_folder_button.place(relx=0.5, rely=0.6, anchor="center")
 
 # Barra de progreso
 progress_var = tk.DoubleVar()
 progress_bar = ttk.Progressbar(root, variable=progress_var, maximum=100)
-progress_bar.grid(row=4, column=0, columnspan=2, padx=10, pady=10, sticky='ew')
+progress_bar.place(relx=0.5, rely=0.8, anchor="center", relwidth=0.9)
 
 # Etiqueta de estado
 status_label = tk.Label(root, text="", font=('Arial', 12))
-status_label.grid(row=5, column=0, columnspan=2, pady=10)
+status_label.place(relx=0.5, rely=0.9, anchor="center")
 
 root.mainloop()
