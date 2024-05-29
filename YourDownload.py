@@ -4,6 +4,11 @@ from pytube import YouTube
 import threading
 import os
 
+# Verificar si la carpeta DVideos existe, si no, crearla
+videos_folder = os.path.join(os.getcwd(), "DVideos")
+if not os.path.exists(videos_folder):
+    os.makedirs(videos_folder)
+
 def download_video():
     url = url_entry.get()
     resolution = resolution_combobox.get()
@@ -23,13 +28,15 @@ def download_video():
 
             if stream:
                 global filepath
-                filepath = stream.download()
+                filepath = os.path.join(videos_folder, yt.title + ".mp4")  # Guardar en la carpeta DVideos
+                stream.download(output_path=videos_folder)
                 status_label.config(text=f"Descargando: {yt.title} en resolución {resolution}")
                 status_label.after(1000, check_download_completion)  # Comprueba si la descarga se ha completado
             else:
                 status_label.config(text=f"Error: No se encontró una stream con resolución {resolution}.")
         except Exception as e:
             status_label.config(text=f"Error: Ha ocurrido un error: {e}")
+
 
     threading.Thread(target=start_download).start()  # Iniciar la descarga en un hilo separado
 
@@ -48,9 +55,8 @@ def progress_callback(stream, chunk, bytes_remaining):
     progress_var.set(percentage_of_completion)
 
 def open_download_folder():
-    if filepath:
-        folder_path = os.path.dirname(filepath)
-        os.system(f'explorer {os.path.realpath(folder_path)}')
+    os.system(f'explorer {os.path.realpath(videos_folder)}')
+
 
 # Crear la ventana principal
 root = tk.Tk()
@@ -73,8 +79,8 @@ resolution_combobox.grid(row=1, column=1, padx=10, pady=(10, 0), sticky='w')
 download_button = tk.Button(root, text="Descargar", command=download_video, font=font_large_bold)
 download_button.grid(row=2, column=0, columnspan=2, pady=20)
 
-# Botón para buscar el archivo descargado
-open_folder_button = tk.Button(root, text="Buscar Archivo", command=open_download_folder, font=font_large_bold, state=tk.DISABLED)
+# Botón para buscar el video
+open_folder_button = tk.Button(root, text="Buscar video", command=open_download_folder, font=font_large_bold)
 open_folder_button.grid(row=3, column=0, columnspan=2, pady=10)
 
 # Barra de progreso
