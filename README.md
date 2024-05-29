@@ -39,7 +39,7 @@ Para ejecutar este proyecto, necesitarás tener instalados los siguientes compon
 Para ejecutar la aplicación, simplemente corre el script principal:
 
 ```bash
-python descargador_youtube.py
+python YourDownload.py
 ```
 
 ## Uso
@@ -68,7 +68,3 @@ Si deseas contribuir a este proyecto, por favor sigue estos pasos:
 ## Licencia
 
 Este proyecto está bajo la licencia MIT. Para más detalles, consulta el archivo `LICENSE`.
-
----
-
-Espero que este README sea de ayuda para documentar tu proyecto. Si necesitas alguna modificación adicional, no dudes en decírmelo.
