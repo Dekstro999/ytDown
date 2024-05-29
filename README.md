@@ -1,11 +1,38 @@
-
 # Descargador de YouTube
 
 Este proyecto es una aplicación de escritorio desarrollada en Python que permite descargar videos de YouTube en diferentes resoluciones. Utiliza la biblioteca `pytube` para la descarga de videos y `tkinter` para la interfaz gráfica de usuario (GUI).
 
-## Requisitos
+## Opciones de Ejecución
 
-Para ejecutar este proyecto, necesitarás tener instalados los siguientes componentes:
+### Opción 1: Ejecutar el Ejecutable Empaquetado
+
+Si solo quieres usar la aplicación sin modificar el código, puedes descargar el ejecutable empaquetado.
+
+#### Requisitos
+
+No necesitas instalar Python ni ninguna biblioteca adicional para ejecutar esta aplicación. Todo lo necesario está incluido en el ejecutable empaquetado.
+
+#### Instalación y Ejecución
+
+1. **Descargar el archivo comprimido**
+
+   Descarga el archivo `proto0.4.rar` desde el enlace proporcionado.
+
+2. **Descomprimir el archivo**
+
+   Usa una herramienta de descompresión (como WinRAR, 7-Zip, etc.) para extraer el contenido del archivo `proto0.4.rar`.
+
+3. **Ejecutar la aplicación**
+
+   Navega hasta la carpeta donde descomprimiste el contenido del archivo `proto0.4.rar` y haz doble clic en el archivo `YourDownload.exe` para iniciar la aplicación.
+
+### Opción 2: Clonar el Repositorio y Ejecutar desde el Código Fuente
+
+Si prefieres clonar el repositorio y modificar el código, sigue las instrucciones a continuación.
+
+#### Requisitos
+
+Para ejecutar este proyecto desde el código fuente, necesitarás tener instalados los siguientes componentes:
 
 - Python 3.6 o superior
 - Bibliotecas de Python:
@@ -13,7 +40,7 @@ Para ejecutar este proyecto, necesitarás tener instalados los siguientes compon
   - `tkinter` (viene preinstalada con Python)
   - `ttk` (parte de `tkinter`)
 
-## Instalación
+#### Instalación
 
 1. **Clonar el repositorio**
 
@@ -35,9 +62,9 @@ Para ejecutar este proyecto, necesitarás tener instalados los siguientes compon
    pip install pytube
    ```
 
-## Ejecución
+#### Ejecución
 
-Para ejecutar la aplicación, simplemente corre el script principal:
+Para ejecutar la aplicación desde el código fuente, simplemente corre el script principal:
 
 ```bash
 python YourDownload.py
@@ -73,3 +100,6 @@ Este proyecto es de código abierto y libre de pirañas.
 ## Licencia
 
 Este proyecto está bajo la licencia MIT. Para más detalles, consulta el archivo `LICENSE`.
+```
+
+Este README proporciona instrucciones tanto para usuarios que solo quieren ejecutar la aplicación empaquetada como para desarrolladores que desean clonar el repositorio y modificar el código fuente.
