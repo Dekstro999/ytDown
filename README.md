@@ -1,7 +1,10 @@
 
 ### <h1 align="center">YOUR DOWNLOAD.</h1>
 
+![Captura de pantalla del juego](https://i.ibb.co/vs3s75M/Your-Download.jpg)
+
 Este proyecto es una aplicación de escritorio desarrollada en Python que permite descargar videos de YouTube en diferentes resoluciones. Utiliza la biblioteca `pytube` para la descarga de videos y `tkinter` para la interfaz gráfica de usuario (GUI).
+
 
 ## Opciones de Ejecución
 
