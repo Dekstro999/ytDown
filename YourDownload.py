@@ -63,11 +63,11 @@ root = tk.Tk()
 root.title("YourDownload 0.5")
 
 # Establecer el ícono de la ventana
-icon_path = os.path.join(os.getcwd(), "icon.ico")
+icon_path = os.path.join(os.getcwd(), "YD/ico/icon.ico")
 root.iconbitmap(icon_path)
 
 # Establecer la imagen de fondo
-background_image = tk.PhotoImage(file=os.path.join(os.getcwd(), "flor.png"))
+background_image = tk.PhotoImage(file=os.path.join(os.getcwd(), "YD/backgrounds/background.png"))
 background_label = tk.Label(root, image=background_image)
 background_label.place(relx=0.5, rely=0.5, anchor="center", relwidth=1, relheight=1)  # Modificado para ajustar a la ventana
 
